@@ -862,4 +862,57 @@ small{opacity:.9}
     height:28px;
   }
 }
+/* ===== FIX DEFINITIVO: MENU MOBILE NÃO CORTA ===== */
+@media (max-width: 980px){
+
+  /* MUITO IMPORTANTE: não deixar o header cortar o dropdown */
+  .header{ overflow: visible; }
+  .header__inner{ overflow: visible; }
+
+  /* Botão Menu */
+  .nav__toggle{
+    display:inline-flex;
+    color:#fff; /* se seu header ficou escuro */
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.10);
+  }
+
+  /* Menu vira overlay fixo */
+  .nav__list{
+    position: fixed;               /* <- chave do bug */
+    top: 86px;                     /* ajuste fino se precisar */
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: min(92vw, 380px);
+    max-height: calc(100vh - 120px);
+    overflow: auto;
+
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 16px;
+    border-radius: 20px;
+
+    background: #fff;
+    border: 1px solid rgba(2,6,23,.10);
+    box-shadow: 0 22px 60px rgba(0,0,0,.22);
+
+    z-index: 99999;
+  }
+
+  .nav__list.show{ display:flex; }
+
+  /* Links pretos + aparência premium */
+  .nav__list a{
+    color: #0b1220 !important;
+    font-weight: 800;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+  .nav__list a:hover{
+    background: rgba(47,108,246,.08);
+  }
+}
 }
