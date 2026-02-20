@@ -858,46 +858,77 @@ small{ opacity:.9; }
     white-space: nowrap !important;
   }
 }
-/* ===== FIX TÍTULO + BANNER NO MOBILE ===== */
+/* ======================================
+   HERO + BANNER MOBILE CENTRALIZADO
+   ====================================== */
+
 @media (max-width: 760px){
 
-  /* 1) TÍTULO: remove o "no-break" no celular (isso é o bug do alinhamento) */
-  .hero-no-break{
-    white-space: normal !important;   /* deixa quebrar linha */
+  /* HERO vira 1 coluna e centraliza tudo */
+  .hero__grid{
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    gap: 20px !important;
   }
 
-  /* garante que nada do hero estoure a tela */
-  .hero__title,
+  .hero__text{
+    width: 100% !important;
+    text-align: center !important;
+    padding: 0 16px !important;
+  }
+
+  /* TÍTULO */
+  .hero__title{
+    width: 100% !important;
+    text-align: center !important;
+    font-size: clamp(34px, 9vw, 46px) !important;
+    line-height: 1.05 !important;
+  }
+
+  /* remove o no-break que estava quebrando o layout */
+  .title-accent.hero-no-break{
+    display: block !important;
+    white-space: normal !important;
+  }
+
   .hero__title-line{
-    max-width: 100% !important;
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
+    display: block !important;
+  }
+
+  .hero__sub{
+    margin: 16px auto !important;
+    max-width: 90% !important;
     text-align: center !important;
   }
 
-  /* 2) BANNER: centraliza e enquadra */
+  .hero__actions{
+    justify-content: center !important;
+  }
+
+  /* ================= BANNER ================= */
+
   .hero__banner{
     width: 100% !important;
-    max-width: 520px !important;   /* fica bonito no celular */
-    margin: 14px auto 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 16px !important;
   }
 
   .banner{
     width: 100% !important;
+    max-width: 520px !important;
     margin: 0 auto !important;
-    overflow: hidden !important;
     border-radius: 26px !important;
+    overflow: hidden !important;
   }
 
   .banner__img{
-    display: block !important;
     width: 100% !important;
-    height: auto !important;
-
-    /* deixa sempre com “cara de banner” no celular */
-    aspect-ratio: 4 / 3;            /* pode trocar p/ 16/10 se preferir */
+    height: 320px !important;
     object-fit: cover !important;
     object-position: center !important;
+    display: block !important;
   }
+
 }
 }
