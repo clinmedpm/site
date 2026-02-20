@@ -14,6 +14,9 @@
 </head>
 
 <body>
+  <!-- Backdrop do menu mobile -->
+  <div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
+
   <!-- HEADER -->
   <header class="header" id="inicio">
     <div class="container header__inner">
@@ -21,7 +24,8 @@
         <img src="assets/img/logo.png" alt="ClinMed" class="brand__logo" />
       </a>
 
-      <button class="nav__toggle" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <button class="nav__toggle" id="menuBtn"
+        aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
         Menu
       </button>
 
@@ -37,7 +41,7 @@
         </ul>
       </nav>
 
-      <!-- ÍCONES DO HEADER (sem caixa) -->
+      <!-- ÍCONES DO HEADER -->
       <div class="header__actions" aria-label="Redes sociais">
         <a class="icon-link" href="https://www.instagram.com/clinmed.pm" target="_blank" rel="noreferrer" aria-label="Instagram">
           <img src="assets/img/instagram.png" alt="Instagram" class="icon-img" />
@@ -58,10 +62,12 @@
       <div class="container hero__grid">
         <div class="hero__text reveal">
           <h1 class="hero__title">
-  <span class="title-accent hero-no-break">Saúde e bem-estar</span><br>
-  <span class="hero__title-line">para você e sua família</span>
-</h1>
+            <span class="title-accent hero-no-break">Saúde e bem-estar</span><br>
+            <span class="hero__title-line">para você e sua família</span>
+          </h1>
 
+          <p class="hero__sub">
+            Atendimento humanizado, estrutura moderna e agendamento rápido — com uma experiência simples e clara para o paciente.
           </p>
 
           <div class="hero__actions">
@@ -105,7 +111,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -121,16 +126,25 @@
 
         <div class="about-grid" aria-label="Missão, Visão e Valores">
           <div class="about-card card reveal">
-            <h3>Missão</h3>
-            <p>Entregar saúde com qualidade, respeito e agilidade, facilitando o acesso ao cuidado.</p>
+            <div class="about-badge">🎯</div>
+            <div>
+              <h3>Missão</h3>
+              <p>Entregar saúde com qualidade, respeito e agilidade, facilitando o acesso ao cuidado.</p>
+            </div>
           </div>
           <div class="about-card card reveal">
-            <h3>Visão</h3>
-            <p>Ser referência regional em atendimento humanizado, estrutura moderna e confiança.</p>
+            <div class="about-badge">🏥</div>
+            <div>
+              <h3>Visão</h3>
+              <p>Ser referência regional em atendimento humanizado, estrutura moderna e confiança.</p>
+            </div>
           </div>
           <div class="about-card card reveal">
-            <h3>Valores</h3>
-            <p>Ética, empatia, clareza, compromisso e excelência no atendimento.</p>
+            <div class="about-badge">🤝</div>
+            <div>
+              <h3>Valores</h3>
+              <p>Ética, empatia, clareza, compromisso e excelência no atendimento.</p>
+            </div>
           </div>
         </div>
       </div>
