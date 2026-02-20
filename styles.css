@@ -915,4 +915,7 @@ small{opacity:.9}
     background: rgba(47,108,246,.08);
   }
 }
+.hero-no-break{
+  white-space: nowrap;
+}
 }
