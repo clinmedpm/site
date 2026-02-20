@@ -96,17 +96,24 @@ a{color:inherit;text-decoration:none}
 }
 
 /* Icons (no box) */
+/* Header actions (ícones) */
 .header__actions{
   display:flex;
   align-items:center;
-  gap:16px;
+  gap:12px;              /* distância entre insta e whats */
+  margin-left: 6px;      /* dá um respiro do menu */
 }
-.icon-link{display:flex;align-items:center;justify-content:center;background:none;border:none;padding:0}
+
 .icon-img{
-  width:40px;
-  height:40px;
-  object-fit:contain;
-  transition: transform .2s ease, opacity .2s ease;
+  width:34px;            /* um pouco menor no mobile */
+  height:34px;
+}
+
+@media (max-width: 760px){
+  .header__inner{ gap:12px; }
+  .brand__logo{ height:46px; }
+  .header__actions{ gap:10px; }
+  .icon-img{ width:32px; height:32px; }
 }
 .icon-link:hover .icon-img{transform:scale(1.1);opacity:.9}
 
@@ -650,7 +657,21 @@ small{opacity:.9}
 .nav__toggle{
   color: #fff !important;
   border-color: rgba(255,255,255,.28) !important;
-  background: rgba(255,255,255,.12) !important;
+  background: rgba(18, 11, 80, 0.12) !important;
+}
+/* Links do menu (principal) */
+.nav__list a{
+  color: rgba(11,18,32,.92);
+}
+
+/* Quando abrir o menu no mobile */
+@media (max-width: 980px){
+  .nav__list a{
+    color: rgba(11,18,32,.92) !important;
+  }
+  .nav__list a:hover{
+    background: rgba(47,108,246,.10);
+  }
 }
 
 /* opcional: deixa mais “premium” ao tocar */
