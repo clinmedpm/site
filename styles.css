@@ -858,4 +858,46 @@ small{ opacity:.9; }
     white-space: nowrap !important;
   }
 }
+/* ===== FIX TÍTULO + BANNER NO MOBILE ===== */
+@media (max-width: 760px){
+
+  /* 1) TÍTULO: remove o "no-break" no celular (isso é o bug do alinhamento) */
+  .hero-no-break{
+    white-space: normal !important;   /* deixa quebrar linha */
+  }
+
+  /* garante que nada do hero estoure a tela */
+  .hero__title,
+  .hero__title-line{
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    text-align: center !important;
+  }
+
+  /* 2) BANNER: centraliza e enquadra */
+  .hero__banner{
+    width: 100% !important;
+    max-width: 520px !important;   /* fica bonito no celular */
+    margin: 14px auto 0 !important;
+  }
+
+  .banner{
+    width: 100% !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+    border-radius: 26px !important;
+  }
+
+  .banner__img{
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+
+    /* deixa sempre com “cara de banner” no celular */
+    aspect-ratio: 4 / 3;            /* pode trocar p/ 16/10 se preferir */
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}
 }
