@@ -746,4 +746,111 @@ small{ opacity:.9; }
 .banner:hover .banner__img{
   transform: scale(1.06);
 }
+/* ===========================
+   FIX MOBILE (centralização + CTA)
+   =========================== */
+@media (max-width: 760px){
+
+  /* Garante que nada "puxe" pro lado */
+  .container{
+    width: min(1160px, 92%);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* HERO: centraliza melhor */
+  .hero__text{
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero__title{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__sub{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Títulos e subtítulos das seções */
+  .section__head{
+    text-align: center;
+    justify-items: center;
+  }
+  .section__head h2,
+  .section__head p{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ESPECIALIDADES: evita parecer "torto" */
+  .grid-cards{
+    margin-left: -6px;
+    margin-right: -6px;
+  }
+
+  /* CTA "Quer agendar..." arruma no mobile */
+  .cta-strip{
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .cta-strip .btn{
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Ajuste fino no texto do CTA */
+  .cta-strip__t{
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .cta-strip__s{
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+/* ===========================
+   CTA STRIP (MOBILE) — PREMIUM GLASS
+   =========================== */
+@media (max-width: 760px){
+  .cta-strip{
+    border-radius: 22px;
+    padding: 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.72));
+    border: 1px solid rgba(2,6,23,.10);
+    box-shadow: 0 22px 60px rgba(2,6,23,.10);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .cta-strip__t{
+    font-weight: 1000;
+    letter-spacing: -0.2px;
+  }
+
+  .cta-strip__s{
+    color: rgba(11,18,32,.72);
+    margin-top: 6px;
+  }
+
+  /* botão mais “premium” e confortável */
+  .cta-strip .btn{
+    border-radius: 18px;
+    padding: 14px 16px;
+  }
+
+  /* dá um respiro entre texto e botão */
+  .cta-strip > div{
+    display: grid;
+    gap: 6px;
+  }
+}
 }
