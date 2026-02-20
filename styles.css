@@ -610,7 +610,7 @@ small{ opacity:.9; }
 }
 
 /* Mobile - aqui resolve header + hero + banner centralizados */
-@media (max-width: 760px){
+@media (max-width: 800px){
 
   /* Header 3 colunas centralizado (resolve "pra esquerda") */
   .header__inner{
