@@ -858,47 +858,99 @@ small{ opacity:.9; }
     white-space: nowrap !important;
   }
 }
-/* ======================================
-   CORREÇÃO FINAL HERO MOBILE
-   ====================================== */
+/* ==============================
+   HERO MOBILE: centralizar + reduzir título + banner
+   ============================== */
 @media (max-width: 760px){
 
-  /* impede qualquer overflow lateral */
-  body{
-    overflow-x: hidden !important;
+  /* evita qualquer deslize lateral */
+  html, body{
+    width:100%;
+    overflow-x:hidden;
   }
 
-  .hero{
-    overflow-x: hidden !important;
-  }
-
-  /* REMOVE o deslocamento causado pelo bg */
-  .hero__bg{
-    inset: -120px -80px auto -80px !important;
-  }
-
-  /* força tudo ficar 100% central */
+  /* hero vira 1 coluna e tudo central */
   .hero__grid{
     grid-template-columns: 1fr !important;
     justify-items: center !important;
+    align-items: center !important;
   }
 
   .hero__text{
     width: 100% !important;
+    max-width: 520px !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  /* ===== TÍTULO: menor e 100% central ===== */
+  .hero__title{
+    width: 100% !important;
+    margin: 0 auto 14px !important;
+    text-align: center !important;
+
+    /* se tiver qualquer transform/margin herdado */
+    transform: none !important;
+    padding: 0 10px !important;
+
+    /* impede “empurrar” por quebra estranha */
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* reduz as duas linhas separadamente (mais controle) */
+  .title-accent{
+    display: block !important;
+    font-size: clamp(34px, 9vw, 46px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.6px !important;
+    margin: 0 auto !important;
+  }
+
+  .hero__title-line{
+    display: block !important;
+    font-size: clamp(34px, 9vw, 46px) !important;
+    line-height: 1.05 !important;
+    margin: 0 auto !important;
+  }
+
+  /* se essa classe estiver travando quebra, removemos no mobile */
+  .hero-no-break{
+    white-space: normal !important;
+  }
+
+  /* ===== SUBTÍTULO central ===== */
+  .hero__sub{
+    max-width: 44ch !important;
+    margin: 0 auto 18px !important;
+    padding: 0 10px !important;
     text-align: center !important;
   }
 
+  /* botões centralizados */
+  .hero__actions{
+    justify-content: center !important;
+  }
+
+  /* ===== BANNER: 100% central ===== */
   .hero__banner{
     width: 100% !important;
+    max-width: 520px !important;
+    margin: 0 auto !important;
     display: flex !important;
     justify-content: center !important;
   }
 
   .banner{
     width: 100% !important;
-    max-width: 500px !important;
     margin: 0 auto !important;
   }
 
+  .banner__img{
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
 }
 }
