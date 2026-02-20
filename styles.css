@@ -859,98 +859,70 @@ small{ opacity:.9; }
   }
 }
 /* ==============================
-   HERO MOBILE: centralizar + reduzir título + banner
+   MENU MOBILE PREMIUM (SEM BLUR)
    ============================== */
 @media (max-width: 760px){
 
-  /* evita qualquer deslize lateral */
-  html, body{
-    width:100%;
-    overflow-x:hidden;
+  /* Painel do menu */
+  #menu{
+    position: fixed;
+    top: 74px; /* altura do header */
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    width: min(92vw, 360px);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+
+    margin: 0;
+    padding: 14px;
+    list-style: none;
+
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 25px 60px rgba(0,0,0,.18);
+
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+
+    transition: opacity .2s ease, transform .2s ease;
   }
 
-  /* hero vira 1 coluna e tudo central */
-  .hero__grid{
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-    align-items: center !important;
+  /* Quando abre */
+  #menu.show{
+    display: grid;
+    gap: 10px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
   }
 
-  .hero__text{
-    width: 100% !important;
-    max-width: 520px !important;
-    text-align: center !important;
-    margin: 0 auto !important;
+  /* Itens */
+  #menu li{
+    margin: 0;
   }
 
-  /* ===== TÍTULO: menor e 100% central ===== */
-  .hero__title{
-    width: 100% !important;
-    margin: 0 auto 14px !important;
-    text-align: center !important;
-
-    /* se tiver qualquer transform/margin herdado */
-    transform: none !important;
-    padding: 0 10px !important;
-
-    /* impede “empurrar” por quebra estranha */
-    word-break: normal;
-    overflow-wrap: anywhere;
+  #menu a{
+    display: block;
+    text-align: center;
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-weight: 700;
+    color: #0b1220;
+    background: linear-gradient(180deg, #ffffff, #f5f8ff);
+    border: 1px solid rgba(2,6,23,.08);
+    transition: transform .15s ease, background .15s ease;
   }
 
-  /* reduz as duas linhas separadamente (mais controle) */
-  .title-accent{
-    display: block !important;
-    font-size: clamp(34px, 9vw, 46px) !important;
-    line-height: 1.05 !important;
-    letter-spacing: -0.6px !important;
-    margin: 0 auto !important;
+  #menu a:active{
+    transform: scale(.97);
   }
 
-  .hero__title-line{
-    display: block !important;
-    font-size: clamp(34px, 9vw, 46px) !important;
-    line-height: 1.05 !important;
-    margin: 0 auto !important;
-  }
-
-  /* se essa classe estiver travando quebra, removemos no mobile */
-  .hero-no-break{
-    white-space: normal !important;
-  }
-
-  /* ===== SUBTÍTULO central ===== */
-  .hero__sub{
-    max-width: 44ch !important;
-    margin: 0 auto 18px !important;
-    padding: 0 10px !important;
-    text-align: center !important;
-  }
-
-  /* botões centralizados */
-  .hero__actions{
-    justify-content: center !important;
-  }
-
-  /* ===== BANNER: 100% central ===== */
-  .hero__banner{
-    width: 100% !important;
-    max-width: 520px !important;
-    margin: 0 auto !important;
-    display: flex !important;
-    justify-content: center !important;
-  }
-
-  .banner{
-    width: 100% !important;
-    margin: 0 auto !important;
-  }
-
-  .banner__img{
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    object-fit: cover !important;
+  /* Remove completamente backdrop */
+  .menu-backdrop{
+    display: none !important;
   }
 }
 }
