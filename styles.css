@@ -769,7 +769,7 @@ small{ opacity:.9; }
 @media (max-width: 2000px){
   .hero__title{
     padding: 0 10px;
-    font-size: clamp(30px, 8.8vw, 46px);
+    font-size: clamp(20px, 4.8vw, 26px);
     line-height: 1.06;
     text-align: center;
   }
@@ -793,6 +793,7 @@ small{ opacity:.9; }
   }
 }
 }
+
 
 
 
