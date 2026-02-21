@@ -778,21 +778,52 @@ small{ opacity:.9; }
     white-space: normal;
   }
 }
-/* FIX MOBILE — banner estável */
-@media (max-width: 200px){
-  .banner{
-    min-height: auto !important;
+/* ===== FIX CENTRALIZAÇÃO MOBILE (hero) ===== */
+@media (max-width: 800px){
+
+  /* garante que o grid ocupa 100% e centraliza */
+  .hero__grid{
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
   }
-  .banner__img{
-    width: 100%;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 16 / 9;  /* pode mudar p/ 16/9 se quiser mais “deitado” */
-    object-fit: cover;
-    display: block;
+
+  /* o bloco de texto vira “central” de verdade */
+  .hero__text{
+    width: 100% !important;
+    max-width: 560px !important;   /* limita p/ ficar bonito */
+    margin: 0 auto !important;
+    padding: 0 14px !important;
+    text-align: center !important;
+  }
+
+  /* título e subtítulo centralizados + sem “empurrar” */
+  .hero__title,
+  .hero__sub{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  /* botões centralizados */
+  .hero__actions{
+    justify-content: center !important;
+  }
+
+  /* stats: remove qualquer “puxada” lateral */
+  .hero__stats{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
+  @media (max-width: 800px){
+  .hero{
+    overflow-x: hidden;
+  }
+  body{
+    overflow-x: hidden;
+  }
 }
+
 
 
 
