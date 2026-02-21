@@ -766,11 +766,11 @@ small{ opacity:.9; }
     display: none !important;
   }
   /* FIX MOBILE — título não corta */
-@media (max-width: 2000px){
+@media (max-width: 2500px){
   .hero__title{
     padding: 0 5px;
-    font-size: clamp(27px, 6.8vw, 36px);
-    line-height: 1.0;
+    font-size: clamp(30px, 4.8vw, 46px);
+    line-height: 0.80;
     text-align: center;
   }
 
@@ -787,12 +787,13 @@ small{ opacity:.9; }
     width: 100%;
     height: auto !important;
     min-height: 0 !important;
-    aspect-ratio: 4 / 3;  /* pode mudar p/ 16/9 se quiser mais “deitado” */
+    aspect-ratio: 16 / 9;  /* pode mudar p/ 16/9 se quiser mais “deitado” */
     object-fit: cover;
     display: block;
   }
 }
 }
+
 
 
 
