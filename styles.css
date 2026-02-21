@@ -768,10 +768,10 @@ small{ opacity:.9; }
   /* FIX MOBILE — título não corta */
 @media (max-width: 2500px){
   .hero__title{
-    padding: 0 5px;
+    padding: 110px;
     font-size: clamp(30px, 4.8vw, 46px);
-    line-height: 0.80;
-    text-align: center;
+    line-height: 1,50;
+    text-align: ;left
   }
 
   .title-accent{
@@ -793,6 +793,7 @@ small{ opacity:.9; }
   }
 }
 }
+
 
 
 
