@@ -613,7 +613,7 @@ small{ opacity:.9; }
 }
 
 /* Mobile */
-@media (max-width: 800px){
+@media (max-width: 1200px){
 
   /* Header sem quebrar */
   .header__inner{
@@ -667,7 +667,7 @@ small{ opacity:.9; }
   .feedbacks{
     grid-template-columns: unset;
     display:flex;
-    gap:12px;
+    gap:5px;
     overflow-x:auto;
     padding: 6px 6px 14px;
     margin: 14px 0 0; /* <- SEM -6px */
@@ -793,6 +793,7 @@ small{ opacity:.9; }
   }
 }
 }
+
 
 
 
