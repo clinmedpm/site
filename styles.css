@@ -768,9 +768,9 @@ small{ opacity:.9; }
   /* FIX MOBILE — título não corta */
 @media (max-width: 500px){
   .hero__title{
-    padding: 110px;
-    font-size: clamp(30px, 4.8vw, 46px);
-    line-height: 1,50;
+    padding: 100px;
+    font-size: clamp(30px, 8.8vw, 46px);
+    line-height: 1.05;
     text-align: ;left
   }
 
@@ -793,6 +793,7 @@ small{ opacity:.9; }
   }
 }
 }
+
 
 
 
