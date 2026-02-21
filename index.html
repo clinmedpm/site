@@ -37,6 +37,7 @@
           <li><a href="#odontologia">Odontologia</a></li>
           <li><a href="#beneficios">Benefícios</a></li>
           <li><a href="#feedbacks">Feedbacks</a></li>
+          <li><a href="#localizacao">Localização</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
@@ -94,7 +95,7 @@
           </div>
         </div>
 
-        <!-- Banner -->
+        <!-- Banner (CORRIGIDO: sem div sobrando) -->
         <div class="hero__banner card reveal">
           <div class="banner" id="banner">
             <img
@@ -103,9 +104,6 @@
               class="banner__img"
               onerror="this.style.display='none'; document.getElementById('banner').classList.add('banner--empty');"
             />
-        
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -306,6 +304,55 @@
       </div>
     </section>
 
+    <!-- LOCALIZAÇÃO / MAPA (NOVO - antes do rodapé) -->
+    <section class="section section--soft" id="localizacao">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Onde <span class="accent">estamos</span></h2>
+          <p class="lead">Av. Presidente Vargas, 164 — Centro — Pará de Minas/MG</p>
+        </div>
+
+        <div class="card reveal" style="padding:16px;">
+          <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin-bottom:12px;">
+            <div style="display:grid; gap:6px;">
+              <div style="font-weight:900;">ClinMed</div>
+              <div style="color:rgba(11,18,32,.72); font-weight:700;">
+                Av. Presidente Vargas, 164 — Centro — Pará de Minas/MG
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn btn--soft" href="https://www.google.com/maps/dir//Clinmed,+Av.+Pres.+Vargas,+164+-+Vila+Raquel,+Pará+de+Minas+-+MG,+35660-000/@-19.8593436,-44.5975568,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0xa73b779a3731bd:0xa6a8709f7c55b421!2m2!1d-44.6009728!2d-19.8655303!3e0?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+                 target="_blank" rel="noreferrer">
+                Abrir no Google Maps
+              </a>
+
+              <a class="btn btn--primary" id="whatsMap" href="#" target="_blank" rel="noreferrer">
+                <img src="assets/img/whatsapp.png" class="btn__icon" alt="">
+                Falar com a equipe
+              </a>
+            </div>
+          </div>
+
+          <div style="border-radius:18px; overflow:hidden; border:1px solid rgba(2,6,23,.10);">
+            <iframe
+              title="Mapa ClinMed"
+              src="https://www.google.com/maps?q=Clinmed,+Av.+Pres.+Vargas,+164+-+Vila+Raquel,+Par%C3%A1+de+Minas+-+MG,+35660-000&output=embed"
+              width="100%"
+              height="360"
+              style="border:0; display:block;"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <p style="margin:12px 0 0; color:rgba(11,18,32,.70); font-weight:700;">
+            Se preferir, clique em “Abrir no Google Maps” para traçar rota direto no seu celular.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer" id="contato">
       <div class="footer__bg" aria-hidden="true"></div>
@@ -326,6 +373,7 @@
           <a href="#odontologia">Odontologia</a>
           <a href="#beneficios">Benefícios</a>
           <a href="#feedbacks">Feedbacks</a>
+          <a href="#localizacao">Localização</a>
         </div>
 
         <div class="reveal">
@@ -388,4 +436,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
