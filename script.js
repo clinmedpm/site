@@ -11,7 +11,8 @@ function setWhatsLinks() {
   const msg = `Olá! Quero agendar um atendimento na ${CLINIC}.`;
   const link = waLink(msg);
 
-  ["whatsHeader", "whatsHero", "whatsFooter", "whatsSpecs"].forEach((id) => {
+  // ✅ Agora inclui o botão do mapa também
+  ["whatsHeader", "whatsHero", "whatsFooter", "whatsSpecs", "whatsMap"].forEach((id) => {
     const el = document.getElementById(id);
     if (el) el.href = link;
   });
@@ -45,45 +46,65 @@ function setupMenu() {
   const btn = document.getElementById("menuBtn");
   const menu = document.getElementById("menu");
   const backdrop = document.getElementById("menuBackdrop");
-  if (!btn || !menu || !backdrop) return;
+
+  if (!btn || !menu) return;
+
+  const isOpen = () => menu.classList.contains("show");
 
   const open = () => {
     menu.classList.add("show");
-    backdrop.classList.add("show");
+    if (backdrop) backdrop.classList.add("show");
     btn.setAttribute("aria-expanded", "true");
     document.documentElement.classList.add("no-scroll");
   };
 
   const close = () => {
     menu.classList.remove("show");
-    backdrop.classList.remove("show");
+    if (backdrop) backdrop.classList.remove("show");
     btn.setAttribute("aria-expanded", "false");
     document.documentElement.classList.remove("no-scroll");
   };
 
-  btn.addEventListener("click", () => {
-    const isOpen = menu.classList.contains("show");
-    if (isOpen) close();
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation(); // ✅ evita clique no botão contar como “clique fora”
+    if (isOpen()) close();
     else open();
   });
 
-  // fecha ao clicar em link
-  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
-
-  // fecha ao clicar no backdrop
-  backdrop.addEventListener("click", close);
-
-  // fecha no ESC
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") close();
+  // ✅ Fecha ao clicar em qualquer link do menu
+  menu.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
+      if (isOpen()) close();
+    });
   });
 
-  // fecha ao clicar fora do menu (garantia)
+  // ✅ Fecha ao clicar no backdrop
+  if (backdrop) {
+    backdrop.addEventListener("click", () => {
+      if (isOpen()) close();
+    });
+  }
+
+  // ✅ Fecha no ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen()) close();
+  });
+
+  // ✅ Fecha ao clicar fora do menu (sem fechar quando clicar no menu ou no botão)
   document.addEventListener("click", (e) => {
     const target = e.target;
     const clickedInside = menu.contains(target) || btn.contains(target);
-    if (!clickedInside && menu.classList.contains("show")) close();
+    if (!clickedInside && isOpen()) close();
   });
+
+  // ✅ Evita scroll “bugado” no mobile quando o menu está aberto
+  document.addEventListener(
+    "touchmove",
+    (e) => {
+      if (isOpen()) e.preventDefault();
+    },
+    { passive: false }
+  );
 }
 
 function setupYear() {
@@ -122,6 +143,7 @@ function setupToTop() {
   btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 }
 
+// INIT
 setWhatsLinks();
 setupLeadForm();
 setupMenu();
