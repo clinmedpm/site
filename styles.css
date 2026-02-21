@@ -20,6 +20,12 @@
 html{ scroll-behavior:smooth; }
 html.no-scroll, html.no-scroll body{ overflow:hidden; }
 
+/* ===== FIX OVERFLOW MOBILE (resolve “tudo pra direita”) ===== */
+html, body{
+  width:100%;
+  overflow-x:hidden;
+}
+
 body{
   margin:0;
   font-family: Inter, system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -577,11 +583,12 @@ small{ opacity:.9; }
   transform: translateY(0);
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= RESPONSIVE (LIMPO, SEM ANINHAR) ================= */
 
 /* Tablet/menu */
 @media (max-width: 980px){
   .nav__toggle{ display:inline-flex; }
+
   .nav__list{
     display:none;
     position:absolute;
@@ -595,278 +602,119 @@ small{ opacity:.9; }
     flex-direction:column;
     align-items:stretch;
     box-shadow: var(--shadow);
-    z-index: 60; /* acima do backdrop */
+    z-index: 60;
   }
   .nav__list.show{ display:flex; }
 
-  .nav__list a{
-    color: rgba(11,18,32,.92);
-  }
-  .nav__list a:hover{
-    background: rgba(47,108,246,.10);
-  }
+  .nav__list a{ color: rgba(11,18,32,.92); }
+  .nav__list a:hover{ background: rgba(47,108,246,.10); }
 
   .footer__grid{ grid-template-columns: 1fr 1fr; }
 }
 
-/* Mobile - aqui resolve header + hero + banner centralizados */
+/* Mobile */
 @media (max-width: 800px){
 
-  /* Header 3 colunas centralizado (resolve "pra esquerda") */
+  /* Header sem quebrar */
   .header__inner{
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-}
+    position: relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap: nowrap;
+  }
 
-.brand{
-  justify-self: start;
-  display:flex;
-  align-items:center;
-}
+  .brand__logo{ height:42px; }
+  .icon-img{ width:28px; height:28px; }
 
-.nav__toggle{
-  justify-self: center;
-}
+  /* Menu central */
+  .nav__toggle{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    white-space:nowrap;
+  }
 
-.header__actions{
-  justify-self: end;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
+  .header__actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap: nowrap;
+    margin:0;
+  }
 
-.brand__logo{
-  height:44px;
-}
-
-.icon-img{
-  width:28px;
-  height:28px;
-}
-
-  /* Hero vira 1 coluna e tudo centraliza */
+  /* HERO 1 coluna */
   .hero__grid{
     grid-template-columns: 1fr;
     gap:14px;
   }
-  .hero__text{
-    text-align:center;
-  }
-  .hero__sub{
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .hero__actions{
-    justify-content:center;
-  }
+  .hero__text{ text-align:center; }
+  .hero__sub{ margin-left:auto; margin-right:auto; }
+  .hero__actions{ justify-content:center; }
 
-  /* Banner centralizado e menor */
-  .hero__banner{
-    padding: 14px;
-  }
-  .banner{
-    min-height: 280px;
-    margin: 0 auto;
-  }
-  .banner__img{
-    min-height: 280px;
-  }
+  /* Banner */
+  .hero__banner{ padding: 14px; }
+  .banner{ min-height: 280px; margin: 0 auto; width:100%; }
+  .banner__img{ min-height: 280px; width:100%; }
 
-  /* Stats viram carrossel */
-  .hero__stats{
+  /* carrosséis sem margin negativo (evita empurrar a página) */
+  .hero__stats,
+  .grid-cards,
+  .about-grid,
+  .dent-grid,
+  .feedbacks{
     grid-template-columns: unset;
     display:flex;
     gap:12px;
     overflow-x:auto;
     padding: 6px 6px 14px;
-    margin: 18px -6px 0;
+    margin: 14px 0 0; /* <- SEM -6px */
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-  }
-  .hero__stats::-webkit-scrollbar{ height: 8px; }
-  .hero__stats::-webkit-scrollbar-thumb{
-    background: rgba(2,6,23,.12);
-    border-radius: 999px;
-  }
-  .hero__stats .stat{
-    flex: 0 0 86%;
-    scroll-snap-align: start;
-    text-align:left;
   }
 
-  /* Especialidades carrossel */
-  .grid-cards{
-    grid-template-columns: unset;
-    display:flex;
-    gap: 12px;
-    overflow-x:auto;
-    padding: 6px 6px 14px;
-    margin: 14px -6px 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .grid-cards::-webkit-scrollbar{ height: 8px; }
-  .grid-cards::-webkit-scrollbar-thumb{
-    background: rgba(2,6,23,.12);
-    border-radius: 999px;
-  }
-  .mini-card{
-    flex: 0 0 78%;
-    scroll-snap-align: start;
-    text-align:left;
-    padding: 16px;
-  }
+  .hero__stats{ margin-top: 18px; }
 
-  /* Sobre carrossel */
-  .about-grid{
-    grid-template-columns: unset;
-    display:flex;
-    gap: 12px;
-    overflow-x:auto;
-    padding: 6px 6px 14px;
-    margin: 14px -6px 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .about-grid::-webkit-scrollbar{ height: 8px; }
-  .about-grid::-webkit-scrollbar-thumb{
-    background: rgba(2,6,23,.12);
-    border-radius: 999px;
-  }
-  .about-grid .about-card{
-    flex: 0 0 92%;
-    scroll-snap-align: start;
-  }
-
-  /* Odonto carrossel */
-  .dent-grid{
-    grid-template-columns: unset;
-    display:flex;
-    gap: 12px;
-    overflow-x:auto;
-    padding: 6px 6px 14px;
-    margin: 14px -6px 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .dent-grid::-webkit-scrollbar{ height: 8px; }
-  .dent-grid::-webkit-scrollbar-thumb{
-    background: rgba(2,6,23,.12);
-    border-radius: 999px;
-  }
-  .dent-card{
-    flex: 0 0 88%;
-    scroll-snap-align: start;
-  }
-
-  /* Feedbacks carrossel */
-  .feedbacks{
-    grid-template-columns: unset;
-    display:flex;
-    gap: 12px;
-    overflow-x:auto;
-    padding: 6px 6px 14px;
-    margin: 14px -6px 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
+  .hero__stats::-webkit-scrollbar,
+  .grid-cards::-webkit-scrollbar,
+  .about-grid::-webkit-scrollbar,
+  .dent-grid::-webkit-scrollbar,
   .feedbacks::-webkit-scrollbar{ height: 8px; }
+
+  .hero__stats::-webkit-scrollbar-thumb,
+  .grid-cards::-webkit-scrollbar-thumb,
+  .about-grid::-webkit-scrollbar-thumb,
+  .dent-grid::-webkit-scrollbar-thumb,
   .feedbacks::-webkit-scrollbar-thumb{
     background: rgba(2,6,23,.12);
     border-radius: 999px;
   }
-  .fb{
-    flex: 0 0 92%;
-    scroll-snap-align: start;
-  }
 
-  /* CTA strip empilha (evita bug do botão) */
-  .cta-strip{
-    flex-direction:column;
-    align-items:stretch;
-  }
-  .cta-strip .btn{
-    width:100%;
-    justify-content:center;
-  }
+  .hero__stats .stat{ flex: 0 0 86%; scroll-snap-align: start; text-align:left; }
+  .mini-card{ flex: 0 0 78%; scroll-snap-align: start; text-align:left; padding:16px; }
+  .about-grid .about-card{ flex: 0 0 92%; scroll-snap-align: start; }
+  .dent-card{ flex: 0 0 88%; scroll-snap-align: start; }
+  .fb{ flex: 0 0 92%; scroll-snap-align: start; }
 
-  .benefits__grid{
-    grid-template-columns: 1fr;
-  }
+  /* CTA strip */
+  .cta-strip{ flex-direction:column; align-items:stretch; }
+  .cta-strip .btn{ width:100%; justify-content:center; }
 
-  .footer__grid{
-    grid-template-columns: 1fr;
-  }
-  .footer__bottom{
-    justify-content:center;
-    text-align:center;
-  }
-  @media (max-width: 760px){
-  .header__actions{
-    justify-self: end;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-wrap: nowrap; /* não deixa quebrar linha */
-  }
+  .benefits__grid{ grid-template-columns: 1fr; }
 
-  .header__actions .icon-img{
-    width: 30px;
-    height: 30px;
-  }
+  .footer__grid{ grid-template-columns: 1fr; }
+  .footer__bottom{ justify-content:center; text-align:center; }
 }
-/* ===========================
-   FIX DEFINITIVO HEADER MOBILE
-   (ícones não caem + menu central)
-   =========================== */
-@media (max-width: 760px){
-  .header__inner{
-    position: relative;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 10px !important;
-    flex-wrap: nowrap !important;  /* IMPede quebrar linha */
-  }
 
-  /* Logo menor pra caber */
-  .brand__logo{
-    height: 42px !important;
-  }
-
-  /* Ícones sempre na mesma linha */
-  .header__actions{
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    flex-wrap: nowrap !important;
-    margin: 0 !important;
-  }
-
-  .icon-img{
-    width: 28px !important;
-    height: 28px !important;
-  }
-
-  /* Botão Menu exatamente no centro do header */
-  .nav__toggle{
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    white-space: nowrap !important;
-  }
-}
 /* ==============================
    MENU MOBILE PREMIUM (SEM BLUR)
    ============================== */
 @media (max-width: 760px){
-
-  /* Painel do menu */
   #menu{
     position: fixed;
-    top: 74px; /* altura do header */
+    top: 74px;
     left: 50%;
     transform: translateX(-50%) translateY(-8px);
     width: min(92vw, 360px);
@@ -890,7 +738,6 @@ small{ opacity:.9; }
     transition: opacity .2s ease, transform .2s ease;
   }
 
-  /* Quando abre */
   #menu.show{
     display: grid;
     gap: 10px;
@@ -899,10 +746,7 @@ small{ opacity:.9; }
     transform: translateX(-50%) translateY(0);
   }
 
-  /* Itens */
-  #menu li{
-    margin: 0;
-  }
+  #menu li{ margin: 0; }
 
   #menu a{
     display: block;
@@ -916,13 +760,9 @@ small{ opacity:.9; }
     transition: transform .15s ease, background .15s ease;
   }
 
-  #menu a:active{
-    transform: scale(.97);
-  }
+  #menu a:active{ transform: scale(.97); }
 
-  /* Remove completamente backdrop */
   .menu-backdrop{
     display: none !important;
   }
-}
 }
