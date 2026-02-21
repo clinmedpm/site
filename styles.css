@@ -766,7 +766,7 @@ small{ opacity:.9; }
     display: none !important;
   }
   /* FIX MOBILE — título não corta */
-@media (max-width: 800px){
+@media (max-width: 200px){
   .hero__title{
     padding: 0 10px;
     font-size: clamp(30px, 8.8vw, 46px);
@@ -779,12 +779,12 @@ small{ opacity:.9; }
   }
 }
 /* FIX MOBILE — banner estável */
-@media (max-width: 800px){
+@media (max-width: 500px){
   .banner{
     min-height: auto !important;
   }
   .banner__img{
-    width: 100%;
+    width: 50%;
     height: auto !important;
     min-height: 0 !important;
     aspect-ratio: 4 / 3;  /* pode mudar p/ 16/9 se quiser mais “deitado” */
@@ -793,3 +793,4 @@ small{ opacity:.9; }
   }
 }
 }
+
