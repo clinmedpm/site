@@ -764,5 +764,77 @@ small{ opacity:.9; }
 
   .menu-backdrop{
     display: none !important;
+    /* =========================
+   PATCH MOBILE (fix corte do texto + banner)
+   Cole NO FINAL do styles.css
+   ========================= */
+
+/* evita qualquer scroll lateral */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* dá uma folga extra em telas muito pequenas */
+@media (max-width: 420px){
+  .container{ width: min(1160px, 90%); }
+}
+
+/* HERO: fontes e quebra de linha no mobile */
+@media (max-width: 800px){
+
+  /* o problema principal: não deixar travado em 1 linha */
+  .hero-no-break{
+    white-space: normal !important; /* libera quebrar linha */
+  }
+
+  .hero__title{
+    /* menor e mais “safe” no celular */
+    font-size: clamp(30px, 9vw, 46px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.6px !important;
+    text-wrap: balance;
+  }
+
+  /* garante que nada do título extrapole */
+  .hero__title,
+  .hero__title *{
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  .hero__sub{
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 2px;
+  }
+}
+
+/* BANNER: comportamento premium e estável no mobile */
+@media (max-width: 800px){
+
+  .hero__banner{
+    padding: 12px;
+  }
+
+  .banner{
+    min-height: auto !important;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 22px;
+  }
+
+  /* mantém proporção bonita sem “estourar” */
+  .banner__img{
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 3;  /* ajuste se quiser mais “alto”: 3/4 */
+    object-fit: cover;
+    display: block;
+  }
+}
   }
 }
