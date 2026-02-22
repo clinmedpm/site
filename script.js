@@ -66,38 +66,33 @@ function setupMenu() {
   };
 
   btn.addEventListener("click", (e) => {
-    e.stopPropagation(); // ✅ evita clique no botão contar como “clique fora”
+    e.stopPropagation();
     if (isOpen()) close();
     else open();
   });
 
-  // ✅ Fecha ao clicar em qualquer link do menu
   menu.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", () => {
       if (isOpen()) close();
     });
   });
 
-  // ✅ Fecha ao clicar no backdrop
   if (backdrop) {
     backdrop.addEventListener("click", () => {
       if (isOpen()) close();
     });
   }
 
-  // ✅ Fecha no ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && isOpen()) close();
   });
 
-  // ✅ Fecha ao clicar fora do menu (sem fechar quando clicar no menu ou no botão)
   document.addEventListener("click", (e) => {
     const target = e.target;
     const clickedInside = menu.contains(target) || btn.contains(target);
     if (!clickedInside && isOpen()) close();
   });
 
-  // ✅ Evita scroll “bugado” no mobile quando o menu está aberto
   document.addEventListener(
     "touchmove",
     (e) => {
