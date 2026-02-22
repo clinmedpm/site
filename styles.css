@@ -20,18 +20,20 @@
 html{ scroll-behavior:smooth; }
 html.no-scroll, html.no-scroll body{ overflow:hidden; }
 
-/* ===== anti-overflow (resolve “tudo pra direita”) ===== */
+/* ===== anti-overflow (ANDROID SAFE) ===== */
 html, body{
   width:100%;
   max-width:100%;
-  overflow-x: clip; /* melhor que hidden em browsers novos */
+  overflow-x: hidden;
 }
 body{
   margin:0;
   font-family: Inter, system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   background:#fff;
   color:var(--ink);
+  overflow-x:hidden;
 }
+
 img, video, svg{ max-width:100%; height:auto; display:block; }
 a{ color:inherit; text-decoration:none; }
 
@@ -240,6 +242,7 @@ a{ color:inherit; text-decoration:none; }
   filter: brightness(0) invert(1);
 }
 
+/* (NÃO é carrossel) */
 .hero__stats{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -304,7 +307,7 @@ a{ color:inherit; text-decoration:none; }
 .about-card h3{ margin:0 0 6px; font-size:1.15rem; }
 .about-card p{ margin:0; color:rgba(11,18,32,.75); line-height:1.7; }
 
-/* ================= ESPECIALIDADES (desktop grid) ================= */
+/* ================= ESPECIALIDADES ================= */
 .grid-cards{
   display:grid;
   grid-template-columns: repeat(4, minmax(0,1fr));
@@ -312,7 +315,6 @@ a{ color:inherit; text-decoration:none; }
   margin-top: 14px;
 }
 
-/* premium mini card */
 .grid-cards--premium .mini-card{
   background:
     radial-gradient(900px 520px at 20% 0%, rgba(34,196,221,.22), transparent 60%),
@@ -547,13 +549,12 @@ small{ opacity:.9; }
   transform: translateY(0);
 }
 
-/* ================= RESPONSIVO (organizado) ================= */
+/* ================= RESPONSIVO ================= */
 
 /* Tablet */
 @media (max-width: 980px){
   .nav__toggle{ display:inline-flex; }
 
-  /* menu drop no tablet */
   .nav__list{
     display:none;
     position:absolute;
@@ -585,21 +586,17 @@ small{ opacity:.9; }
   .brand__logo{ height:44px; }
   .icon-img{ width:28px; height:28px; }
 
-  /* hero centralizado e elegante */
   .hero__text{
     text-align:center;
     max-width: 680px;
     margin-inline:auto;
   }
   .hero__actions{ justify-content:center; }
+
+  /* hero stats: apenas empilha (não carrossel) */
   .hero__stats{
     grid-template-columns: 1fr;
   }
-
-  /* SOBRE / ODONTO / FEEDBACKS: empilha (minimalista) */
-  .about-grid{ grid-template-columns: 1fr; }
-  .dent-grid{ grid-template-columns: 1fr; }
-  .feedbacks{ grid-template-columns: 1fr; }
 
   /* CTA strip empilha */
   .cta-strip{ flex-direction:column; align-items:stretch; }
@@ -609,22 +606,69 @@ small{ opacity:.9; }
   .footer__grid{ grid-template-columns: 1fr; }
   .footer__bottom{ justify-content:center; text-align:center; }
 
-  /* ✅ ESPECIALIDADES: carrossel 2-em-2 (premium) */
-  .grid-cards{
-    display:grid;
-    grid-auto-flow: column;
-    grid-auto-columns: calc((100% - 14px) / 2);
-    overflow-x:auto;
-    scroll-snap-type: x mandatory;
+  /* ====== CARROSSEL (SÓ NESTAS SEÇÕES) ====== */
+  .about-grid,
+  .grid-cards,
+  .dent-grid,
+  .feedbacks{
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    padding: 6px 4px 14px;
+    gap: 12px;
   }
-  .mini-card{
+
+  /* SOBRE: carrossel */
+  .about-grid{
+    display: flex;
+  }
+  .about-grid .about-card{
+    flex: 0 0 92%;
+    scroll-snap-align: start;
+  }
+
+  /* ESPECIALIDADES: carrossel (1 por slide) */
+  .grid-cards{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 86%;
+    grid-template-columns: none;
+    margin-top: 14px;
+  }
+  .grid-cards .mini-card{
     scroll-snap-align: start;
     text-align:left;
   }
-  .grid-cards::-webkit-scrollbar{ height: 8px; }
-  .grid-cards::-webkit-scrollbar-thumb{
+
+  /* ODONTO: carrossel */
+  .dent-grid{
+    display: flex;
+  }
+  .dent-grid .dent-card{
+    flex: 0 0 92%;
+    scroll-snap-align: start;
+  }
+
+  /* AVALIAÇÕES: carrossel */
+  .feedbacks{
+    display: flex;
+  }
+  .feedbacks .fb{
+    flex: 0 0 92%;
+    scroll-snap-align: start;
+  }
+
+  /* scrollbar discreta */
+  .about-grid::-webkit-scrollbar,
+  .grid-cards::-webkit-scrollbar,
+  .dent-grid::-webkit-scrollbar,
+  .feedbacks::-webkit-scrollbar{
+    height: 8px;
+  }
+  .about-grid::-webkit-scrollbar-thumb,
+  .grid-cards::-webkit-scrollbar-thumb,
+  .dent-grid::-webkit-scrollbar-thumb,
+  .feedbacks::-webkit-scrollbar-thumb{
     background: rgba(2,6,23,.14);
     border-radius: 999px;
   }
@@ -637,5 +681,3 @@ small{ opacity:.9; }
     line-height: 1.02;
   }
 }
-
-
