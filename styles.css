@@ -557,10 +557,17 @@ small{ opacity:.9; }
 
   .nav__list{
     display:none;
-    position:absolute;
-    right:0;
-    top:58px;
-    width:min(360px, 92vw);
+
+    /* 🔥 CENTRALIZAÇÃO REAL */
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 78px;
+
+    width: min(420px, 92vw);
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+
     background:#fff;
     border:1px solid var(--line);
     border-radius:16px;
@@ -681,3 +688,4 @@ small{ opacity:.9; }
     line-height: 1.02;
   }
 }
+
