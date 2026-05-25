@@ -1,6 +1,6 @@
 // TROQUE AQUI: 55 + DDD + número (somente números)
 // Ex: (37) 99868-7629 -> 5537998687629
-const PHONE = "553732316020";
+const PHONE = "5537984080067";
 const CLINIC = "ClinMed";
 
 function waLink(message) {
